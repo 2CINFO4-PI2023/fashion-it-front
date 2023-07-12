@@ -1,37 +1,98 @@
 <div class=" content">
   <div class=" row">
-    <div class=" col-md-6">
+    <div class=" col-md-12">
       <div class=" card">
         <div class=" card-header">
-          <h4 class=" card-title">Stacked Form</h4>
+          <h4 class=" card-title">Publication Form</h4>
         </div>
-        <div class=" card-body">
-          <form action="#">
-            <label> Email address </label>
+        <form (submit)="submitForm()">
+          <angular2-multiselect
+          [data]="[
+            { itemName: 'public' },
+            {itemName: 'private' }
+          ]"
+          [(ngModel)]="selectedStatus" name="status" required
+          [settings]="{
+            singleSelection: true,
+            text: 'Choose status post ',
+            classes: 'selectpicker btn-danger',
+            lazyLoading: true,
+            maxHeight: 100
+          }"
+        >
+        </angular2-multiselect>
+        
+          <div class=" card-body">
+            <label>title : </label>
             <div class=" form-group">
-              <input class=" form-control" type="email" />
+              <input class=" form-control" type="text" [(ngModel)]="publication.title" name="title" required />
             </div>
-            <label> Password </label>
+            <label>describe your post : </label>
             <div class=" form-group">
-              <input class=" form-control" type="password" />
-            </div>
-            <div class=" form-check mt-3">
-              <label class=" form-check-label">
-                <input class=" form-check-input" type="checkbox" />
 
-                <span class=" form-check-sign"> </span> Subscribe to newsletter
-              </label>
+              <textarea class=" form-control" [(ngModel)]="publication.content" name="content" required></textarea>
             </div>
-          </form>
+
+            <div class=" col-md-8">
+              <h4 class=" card-title">Select your image or video </h4>
+              <app-picture-upload></app-picture-upload>
+
+            </div>
+
+          </div>
+          <div class=" card-footer">
+            <button class=" btn btn-fill btn-primary" type="submit">
+              Post
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Publications</h4>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-primary" type="submit">
-            Submit
-          </button>
+        <div *ngIf="pub" class="card-body">
+          <div *ngFor="let item of pub; let i = index" class="row" style="border: 5px; margin: 15px; border-color: aliceblue; border: inset;">
+            <label class="col-sm-2 col-form-label">Publication Status</label>
+            <div class="col-sm-10">
+              <div class="form-group">
+                <p class="form-control-static">{{ item.status }}</p>
+              </div>
+            </div>
+            <label class="col-sm-2 col-form-label">Publication title</label>
+            <div class="col-sm-10">
+              <div class="form-group">
+                <p class="form-control-static">{{ item.title }}</p>
+              </div>
+            </div>
+            <label class="col-sm-2 col-form-label">Publication Content</label>
+            <div class="col-sm-10">
+              <div class="form-group">
+                <p class="form-control-static">{{ item.content }}</p>
+              </div>
+            </div>
+            <label class="col-sm-2 col-form-label">User created the publication</label>
+            <div class="col-sm-10">
+              <div class="form-group">
+                <p class="form-control-static">{{ users[item.userId]?.username }}</p>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" (click)="editPublication(item._id)">Edit</button>
+            </div>
+            <div class="col-sm-2">
+              <button class="btn btn-danger" (click)="deletePublication(i)">Delete</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class=" col-md-6">
+    
+  </div>
+</div>
+<!-- <div class=" col-md-6">
       <div class=" card">
         <div class=" card-header">
           <h4 class=" card-title">Horizontal Form</h4>
@@ -399,4 +460,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

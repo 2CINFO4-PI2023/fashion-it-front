@@ -28,7 +28,7 @@ export const FormsRoutes: Routes = [
     path: "",
     children: [
       {
-        path: "validation",
+        path: "validation/:id",
         component: ValidationComponent
       }
     ]

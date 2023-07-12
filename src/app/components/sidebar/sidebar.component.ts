@@ -196,7 +196,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/forms",
-    title: "Forms",
+    title: "Publications",
     type: "sub",
     icontype: "tim-icons icon-notes",
     collapse: "forms",
