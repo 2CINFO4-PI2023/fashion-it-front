@@ -1,0 +1,86 @@
+<div class="content">
+  <div class="col-md-8 ml-auto mr-auto">
+    <h2 class="text-center">Les réclamations</h2>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="toolbar"></div>
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      [(ngModel)]="emailRecherche"
+                      (keydown.enter)="rechercherParEmail(emailRecherche)"
+                      (input)="filterReclamations()"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>NOM</th>
+                  <th>Prénom</th>
+                  <th>Mail</th>
+                  <th>Tel</th>
+                  <th>Message</th>
+                  <th>Date de création</th>
+                  <th>Type de réclamation</th>
+                  <th>Actions</th> <!-- Ajout de la colonne "Actions" -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of reclamationsRecherchees">
+                  <td>{{ item.nom }}</td>
+                  <td>{{ item.prenom }}</td>
+                  <td>{{ item.mail }}</td>
+                  <td>{{ item.tel }}</td>
+                  <td>{{ item.message }}</td>
+                  <td>{{ item.dateCreation }}</td>
+                  <td>{{ item.typeR }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-danger" (click)="supprimerReclamation(item._id)">Supprimer</button>
+                  </td> <!-- Ajout du bouton "Supprimer" -->
+                  <!-- Ajoutez d'autres colonnes ici si nécessaire -->
+                </tr>
+              </tbody>
+            </table>
+
+            <div *ngIf="reclamationSupprimee" class="alert alert-success">
+              La Réclamation a été supprimée avec succès.
+            </div> <!-- Ajout de la div pour afficher le message de succès -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,11 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { ListereclamationComponent } from './gestion-reclamation/listereclamation/listereclamation.component';
+import { ListetypeComponent } from "./gestion-reclamation/listetype/listetype.component";
+import { AddtypeComponent } from "./gestion-reclamation/addtype/addtype.component";
+import { UpdatetypeComponent } from "./gestion-reclamation/updatetype/updatetype.component";
+import { ListestaticComponent } from "./gestion-reclamation/listestatic/listestatic.component";
 
 const routes: Routes = [
   {
@@ -80,10 +85,37 @@ const routes: Routes = [
     ]
   },
   {
+    path: "Reclamation",
+    component: ListereclamationComponent
+  },
+  {
+    path: "Type",
+    component: ListetypeComponent
+  },
+  {
+    path: "AjouterType",
+    component: AddtypeComponent
+  },
+  {
+    path: "Type/:id",
+    component: UpdatetypeComponent
+  },
+  {
+    path: "reclamation-stats",
+    component: ListestaticComponent
+  },
+  {
     path: "**",
     redirectTo: "dashboard"
   }
 ];
+const routs:Routes =[{path:"Reclamation",component:ListereclamationComponent},
+{path:"Type",component:ListetypeComponent},
+{path:"AjouterType",component:AddtypeComponent},
+{path:"Type/:id",component:UpdatetypeComponent},
+{path:"reclamation-stats",component:ListestaticComponent}
+]
+
 
 @NgModule({
   imports: [

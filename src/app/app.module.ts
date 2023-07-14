@@ -12,13 +12,23 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { ListereclamationComponent } from './gestion-reclamation/listereclamation/listereclamation.component';
+import { ListetypeComponent } from './gestion-reclamation/listetype/listetype.component';
+import { AddtypeComponent } from './gestion-reclamation/addtype/addtype.component';
+import { UpdatetypeComponent } from './gestion-reclamation/updatetype/updatetype.component';
+import { ListestaticComponent } from './gestion-reclamation/listestatic/listestatic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    RtlLayoutComponent
+    RtlLayoutComponent,
+    ListereclamationComponent,
+    ListetypeComponent,
+    AddtypeComponent,
+    UpdatetypeComponent,
+    ListestaticComponent
   ],
   imports: [
     CommonModule,

@@ -50,10 +50,10 @@ export const ROUTES: RouteInfo[] = [
     isCollapsed: true,
     children: [
       {
-        path: "pricing",
+        path: "Reclamation",
         rtlTitle: " التسعير ",
         rtlSmallTitle: "ع ",
-        title: "Pricing",
+        title: "Reclamation",
         type: "link",
         smallTitle: "P"
       },
@@ -308,13 +308,6 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: "/widgets",
-    title: "Widgets",
-    type: "link",
-    rtlTitle: "الحاجيات",
-    icontype: "tim-icons icon-settings"
-  },
-  {
     path: "/charts",
     title: "Charts",
     type: "link",
@@ -322,11 +315,18 @@ export const ROUTES: RouteInfo[] = [
     icontype: "tim-icons icon-chart-bar-32"
   },
   {
-    path: "/calendar",
-    title: "Calendar",
+    path: "/Type",
+    title: "Type",
+    type: "link",
+    rtlTitle: "الحاجيات",
+    icontype: "tim-icons icon-settings"
+  },
+  {
+    path: "/Reclamation",
+    title: "Reclamation",
     rtlTitle: "التقويم",
     type: "link",
-    icontype: "tim-icons icon-time-alarm"
+    icontype: "tim-icons icon-bell-55"
   }
 ];
 

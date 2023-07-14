@@ -1,0 +1,71 @@
+<div class="content mt-5">
+      <div class="col-md-8 ml-auto mr-auto">
+        <h2 class="text-center">Gestion des types</h2>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="toolbar"></div>
+              <div class="dataTables_wrapper py-4">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="dataTables_length" id="datatable_length">
+                      <label>
+                        Show
+                        <select
+                          name="datatable_length"
+                          aria-controls="datatable"
+                          class="form-control form-control-sm"
+                          (change)="entriesChange($event)"
+                        >
+                          <option value="10" [selected]="entries == 10">10</option>
+                          <option value="25" [selected]="entries == 25">25</option>
+                          <option value="50" [selected]="entries == 50">50</option>
+                          <option value="-1" [selected]="entries == -1">All</option>
+                        </select>
+                        entries
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div id="datatable_filter" class="dataTables_filter">
+                      <button class="btn btn-sm btn-warning" routerLink="/AjouterType">Ajouter un type</button>
+                    </div>
+                  </div>          
+                
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>title</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of type">
+                      <td>{{ item._id }}</td>
+                      <td>{{ item.typeId }}</td>
+                      <td>{{ item.title }}</td>
+
+                      <td>
+                        <button class="btn btn-sm btn-danger mr-2" (click)="supprimerType(item.id)">Supprimer</button>
+                        <button class="btn btn-sm btn-primary" [routerLink]="'/Type/'+ item._id">Modifier</button>
+                      </td> <!-- Ajout du bouton "Supprimer" -->
+                      <!-- Ajoutez d'autres colonnes ici si nécessaire -->
+                    </tr>
+                  </tbody>
+              </table>
+    
+    
+                <div *ngIf="typeSupprimee" class="alert alert-success">
+                  Le type a été supprimé avec succès.
+                </div> <!-- Ajout de la div pour afficher le message de succès -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  
