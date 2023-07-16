@@ -3,6 +3,7 @@ import { Routes } from "@angular/router";
 import { RegularComponent } from "./regular/regular.component";
 import { ExtendedComponent } from "./extended/extended.component";
 import { NgxDatatablesComponent } from "./ngxdatatables/ngxdatatables.component";
+import { GestionCommandeComponent } from "src/app/gestion-commande/gestion-commande.component";
 
 export const TablesRoutes: Routes = [
   {
@@ -27,8 +28,8 @@ export const TablesRoutes: Routes = [
     path: "",
     children: [
       {
-        path: "ngx-datatable",
-        component: NgxDatatablesComponent
+        path: "commande",
+        component: GestionCommandeComponent
       }
     ]
   }

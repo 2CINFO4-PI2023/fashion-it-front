@@ -1,0 +1,50 @@
+<form (submit)="ajouterLivreur()" #livreurForm="ngForm">
+    <div>
+      <label for="nom">Nom :</label>
+      <input type="text" id="nom" name="nom" required [(ngModel)]="nouveauLivreur.Nom">
+    </div>
+  
+    <div>
+      <label for="prenom">Prénom :</label>
+      <input type="text" id="prenom" name="prenom" required [(ngModel)]="nouveauLivreur.Prenom">
+    </div>
+  
+    <div>
+      <label for="telephone">Numéro de téléphone :</label>
+      <input type="text" id="telephone" name="telephone" required [(ngModel)]="nouveauLivreur.NUMtelephone">
+    </div>
+  
+    <div>
+      <label for="adresse">Adresse :</label>
+      <input type="text" id="adresse" name="adresse" required [(ngModel)]="nouveauLivreur.adresse">
+    </div>
+  
+    <div>
+      <label for="email">Adresse email :</label>
+      <input type="email" id="email" name="email" required [(ngModel)]="nouveauLivreur.adressEmail">
+    </div>
+  
+    <div>
+      <label for="vehicule">Type de véhicule :</label>
+      <input type="text" id="vehicule" name="vehicule" required [(ngModel)]="nouveauLivreur.typeDEvehicule">
+    </div>
+    <div>
+        <label for="age">age :</label>
+        <input type="text" id="age" name="age" required [(ngModel)]="nouveauLivreur.age">
+      </div>
+      <div>
+        <label for="profession">profession :</label>
+        <input type="text" id="profession" name="vehicule" required [(ngModel)]="nouveauLivreur.profession">
+      </div>
+      <div>
+        <label for="sex">sex :</label>
+        <input type="text" id="sex" name="sex" required [(ngModel)]="nouveauLivreur.sex">
+      </div>
+      <div>
+        <label for="moyenneNote">moyenneNote :</label>
+        <input type="text" id="moyenneNote" name="moyenneNote" required [(ngModel)]="nouveauLivreur.moyenneNote">
+      </div>
+      
+  
+    <button type="submit">Ajouter</button>
+  </form>

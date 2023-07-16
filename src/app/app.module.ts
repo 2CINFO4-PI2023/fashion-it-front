@@ -11,14 +11,23 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
-import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { GestionLivraisonComponent } from './gestion-livraison/gestion-livraison.component';
+import { AddLivreurComponent } from './gestion-livraison/add-livreur/add-livreur.component';
+import { GestionCommandeComponent } from './gestion-commande/gestion-commande.component';
+import { GestionNotelivreurComponent } from './gestion-notelivreur/gestion-notelivreur.component';
+import { AddCommandeComponent } from './add-commande/add-commande.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    RtlLayoutComponent
+    GestionLivraisonComponent,
+    AddLivreurComponent,
+    GestionCommandeComponent,
+    GestionNotelivreurComponent,
+    AddCommandeComponent,
+    
   ],
   imports: [
     CommonModule,

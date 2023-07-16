@@ -22,6 +22,7 @@ import { FixedPluginComponent } from "./fixed-plugin/fixed-plugin.component";
 @NgModule({
   imports: [
     CommonModule,
+
     RouterModule,
     HttpClientModule,
     FormsModule,

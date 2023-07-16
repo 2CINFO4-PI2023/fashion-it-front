@@ -1,0 +1,32 @@
+<h2>Ajouter une commande</h2>
+<form (submit)="ajoutercommande()">
+  <div>
+    <label for="livreurId">ID du livreur :</label>
+    <input type="text" id="livreurId" [(ngModel)]="nouveaucommande.livreurId" name="livreurId" required>
+  </div>
+  <div>
+    <label for="produits">Produits :</label>
+    <input type="text" id="produits" [(ngModel)]="nouveaucommande.produits" name="produits" required>
+  </div>
+  <div>
+    <label for="adresse">Adresse :</label>
+    <input type="text" id="adresse" [(ngModel)]="nouveaucommande.adresse" name="adresse" required>
+  </div>
+  <div>
+    <label for="adressEmail">Adresse email :</label>
+    <input type="email" id="adressEmail" [(ngModel)]="nouveaucommande.adressEmail" name="adressEmail" required>
+  </div>
+  <div>
+    <label for="Prixtotal">Prix total :</label>
+    <input type="text" id="Prixtotal" [(ngModel)]="nouveaucommande.Prixtotal" name="Prixtotal" required>
+  </div>
+  <div>
+    <label for="latitude">Latitude :</label>
+    <input type="text" id="latitude" [(ngModel)]="nouveaucommande.latitude" name="latitude">
+  </div>
+  <div>
+    <label for="longitude">Longitude :</label>
+    <input type="text" id="longitude" [(ngModel)]="nouveaucommande.longitude" name="longitude">
+  </div>
+  <button type="submit">Ajouter</button>
+</form>

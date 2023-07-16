@@ -5,7 +5,10 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
-import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { GestionLivraisonComponent } from "./gestion-livraison/gestion-livraison.component";
+import { AddLivreurComponent } from "./gestion-livraison/add-livreur/add-livreur.component";
+import { GestionCommandeComponent } from "./gestion-commande/gestion-commande.component";
+import { AddCommandeComponent } from "./add-commande/add-commande.component";
 
 const routes: Routes = [
   {
@@ -65,13 +68,14 @@ const routes: Routes = [
     children: [
       {
         path: "pages",
-        loadChildren: () => import('./pages/examples/pages/pages.module').then(x=>x.PagesModule)
+        redirectTo: "GestionLivraisonComponent"
+
       }
     ]
   },
   {
     path: "",
-    component: RtlLayoutComponent,
+    component: GestionLivraisonComponent,
     children: [
       {
         path: "pages",
@@ -80,15 +84,29 @@ const routes: Routes = [
     ]
   },
   {
+    path: "commande",
+    redirectTo: "GestionCommandeComponent"
+  },
+  {
     path: "**",
     redirectTo: "dashboard"
+  },
+  {
+    path: "livreur",
+    redirectTo: "GestionLivraisonComponent"
   }
+  
 ];
+
+const routs:Routes =[{path:"lvreur",component:GestionLivraisonComponent},
+{path:"ajouter",component:AddLivreurComponent}, {path: 'gestion-commande', component: GestionCommandeComponent}
+,{path: 'ajoutercommande', component: AddCommandeComponent}
+]
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
+    BrowserModule,RouterModule.forRoot(routs),
     RouterModule.forRoot(routes, {
       useHash: true,
       scrollPositionRestoration: "enabled",

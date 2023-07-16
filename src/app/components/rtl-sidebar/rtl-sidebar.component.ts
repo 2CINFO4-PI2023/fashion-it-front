@@ -13,5 +13,6 @@ export class RtlSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    console.log(this.menuItems)
   }
 }
