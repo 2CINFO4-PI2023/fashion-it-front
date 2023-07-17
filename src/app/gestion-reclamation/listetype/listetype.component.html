@@ -49,7 +49,7 @@
                       <td>{{ item.title }}</td>
 
                       <td>
-                        <button class="btn btn-sm btn-danger mr-2" (click)="supprimerType(item.id)">Supprimer</button>
+                        <button class="btn btn-sm btn-danger mr-2" (click)="supprimerType(item._id)">Supprimer</button>
                         <button class="btn btn-sm btn-primary" [routerLink]="'/Type/'+ item._id">Modifier</button>
                       </td> <!-- Ajout du bouton "Supprimer" -->
                       <!-- Ajoutez d'autres colonnes ici si nécessaire -->

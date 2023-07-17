@@ -17,6 +17,7 @@ import { ListetypeComponent } from './gestion-reclamation/listetype/listetype.co
 import { AddtypeComponent } from './gestion-reclamation/addtype/addtype.component';
 import { UpdatetypeComponent } from './gestion-reclamation/updatetype/updatetype.component';
 import { ListestaticComponent } from './gestion-reclamation/listestatic/listestatic.component';
+import { ChartsModule } from "./pages/examples/charts/charts.module";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ListestaticComponent } from './gestion-reclamation/listestatic/listesta
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

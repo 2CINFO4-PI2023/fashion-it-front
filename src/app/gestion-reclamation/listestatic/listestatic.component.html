@@ -3,21 +3,14 @@
       <h2 class="text-center">Statistiques des réclamations</h2>
     </div>
     <div class="row mt-5">
-      <div class="col-md-12">
+      <div class="col-md-6 offset-md-3">
         <div class="card">
           <div class="card-body">
-            <div class="toolbar"></div>
-            <div *ngIf="reclamationStats">
-                <ul>
-                <div *ngIf="reclamationStats">
-                    <canvas baseChart [data]="chartData" [labels]="chartLabels" [options]="chartOptions" [chartType]="'bar'"></canvas>
-                </div>
-                </ul>
-              </div>
+            <div class="chart-container">
+              <canvas #chartCanvas></canvas>
+            </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-
-
+  </div>
