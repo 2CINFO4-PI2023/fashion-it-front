@@ -12,13 +12,17 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { CategorieComponent } from './categorie/categorie.component';
+import { ProduitComponent } from './produit/produit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    RtlLayoutComponent
+    RtlLayoutComponent,
+    CategorieComponent,
+    ProduitComponent
   ],
   imports: [
     CommonModule,
