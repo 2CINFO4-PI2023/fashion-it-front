@@ -27,7 +27,7 @@ export class TypeService {
   }
   public updateType(id: string, typeModifie: Type): Observable<Type> {
     const apiUrl = `${this.url}type/${id}`;
-    return this.http.put<Type>(apiUrl, typeModifie).pipe(
+    return this.http.patch<Type>(apiUrl, typeModifie).pipe(
       catchError((error) => {
         console.error(`Une erreur s'est produite lors de la mise à jour du type avec l'ID ${id} :`, error);
         throw error;

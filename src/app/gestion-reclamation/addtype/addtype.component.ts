@@ -24,7 +24,7 @@ export class AddtypeComponent implements OnInit {
         this.message = 'Type ajouté avec succès.';
         // Redirection vers /type après 1 seconde
         setTimeout(() => {
-          this.router.navigate(['/type']);
+          this.router.navigate(['/Type']);
         }, 1000);
       },
       (error: any) => {

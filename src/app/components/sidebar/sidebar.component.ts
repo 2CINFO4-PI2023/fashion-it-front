@@ -308,8 +308,8 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: "/charts",
-    title: "Charts",
+    path: "/reclamation-stats",
+    title: "statistique de reclamation",
     type: "link",
     rtlTitle: "الرسوم البيانية",
     icontype: "tim-icons icon-chart-bar-32"
