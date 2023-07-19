@@ -9,6 +9,9 @@ import { GestionLivraisonComponent } from "./gestion-livraison/gestion-livraison
 import { AddLivreurComponent } from "./gestion-livraison/add-livreur/add-livreur.component";
 import { GestionCommandeComponent } from "./gestion-commande/gestion-commande.component";
 import { AddCommandeComponent } from "./add-commande/add-commande.component";
+import { GestionNotelivreurComponent } from "./gestion-notelivreur/gestion-notelivreur.component";
+import { AddNotelivreursComponent } from "./add-notelivreurs/add-notelivreurs.component";
+import { StatistiqueLivreurComponent } from "./statistique-livreur/statistique-livreur.component";
 
 const routes: Routes = [
   {
@@ -91,16 +94,14 @@ const routes: Routes = [
     path: "**",
     redirectTo: "dashboard"
   },
-  {
-    path: "livreur",
-    redirectTo: "GestionLivraisonComponent"
-  }
+
   
 ];
 
 const routs:Routes =[{path:"lvreur",component:GestionLivraisonComponent},
 {path:"ajouter",component:AddLivreurComponent}, {path: 'gestion-commande', component: GestionCommandeComponent}
-,{path: 'ajoutercommande', component: AddCommandeComponent}
+,{path: 'ajoutercommande', component: AddCommandeComponent}, {path: 'gestion-notelivreur', component: GestionNotelivreurComponent},{path: 'addnote', component: AddNotelivreursComponent},{path: 'stat', component: StatistiqueLivreurComponent}
+
 ]
 
 @NgModule({

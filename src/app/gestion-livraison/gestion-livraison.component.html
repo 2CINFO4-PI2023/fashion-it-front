@@ -9,9 +9,12 @@
         <th>Adresse email</th>
         <!-- Ajoutez d'autres en-têtes de colonne ici -->
       </tr>
+   
     </thead>
     <tbody>
       <tr *ngFor="let liv of livreurs">
+                
+
         <td>{{ liv.Nom }}</td>
         <td>{{ liv.Prenom }}</td>
         <td>{{ liv.NUMtelephone }}</td>
@@ -20,6 +23,13 @@
         <td>
           <button (click)="deleteLivreur(liv._id)">Supprimer</button>
         </td>
+        <td>
+          <button (click)="openDialog(liv._id, liv.Nom, liv.Prenom,liv.NUMtelephone, liv.adresse,liv.adressEmail,liv.typeDEvehicule,liv.age,liv.profession,liv.sex,liv.moyenneNote )">modifier</button>
+        </td>
+
+
+
+
         <!-- Ajoutez d'autres cellules de données ici -->
       </tr>
     </tbody>
@@ -27,4 +37,7 @@
 
   <button class="btn btn-success" (click)="ajouter()">Ajouter Livreur</button>
 
-  
+  <nav>
+    <a routerLink="/addnote">ajouter note a une livreur</a>
+    <!-- Ajoutez d'autres liens de navigation ici -->
+  </nav>

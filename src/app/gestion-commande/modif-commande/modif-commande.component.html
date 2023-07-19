@@ -1,0 +1,120 @@
+<div>
+    <div class="add-title">
+      <mat-toolbar class="toolbar-color py-4 mb-4" style="background-color:rgb(22, 77, 96);">
+        <div fxFlex fxLayout fxLayoutAlign="space-around center">
+          <h3>Modification</h3>
+        </div>
+      </mat-toolbar>
+    </div>
+    <div>
+      <form [formGroup]="addCusForm" (change)="formChanged()">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="50">
+            <fieldset>
+
+              <mat-grid-list cols="3" [cols]="3" rowHeight="95px" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                  <div class="text-inside">
+                    <mat-form-field class="small-form-field">
+                      <input matInput placeholder="Produit" formControlName="produit" [(ngModel)]="data.produits"  required>
+  
+                      <mat-error *ngIf="addCusForm.controls.produit.hasError('required')">
+                        Champ obligatoire
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </mat-grid-tile>
+               <mat-grid-tile>
+                  <div class="text-inside">
+                    <mat-form-field class="small-form-field">
+                      <input matInput placeholder="Adresse" formControlName="adresse" [(ngModel)]="data.adresse" required>
+  
+                      <mat-error *ngIf="addCusForm.controls.adresse.hasError('required')">
+                        Champ obligatoire
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <div class="text-inside">
+                    <mat-form-field class="small-form-field">
+                      <input matInput placeholder="Adresse Email" formControlName="adressEmail" [(ngModel)]="data.adressEmail" required>
+  
+                      <mat-error *ngIf="addCusForm.controls.adressEmail.hasError('required')">
+                        Champ obligatoire
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="text-inside">
+                    <mat-form-field class="small-form-field">
+                      <input matInput placeholder="Prix Totale" formControlName="Prixtotal" [(ngModel)]="data.Prixtotal" required>
+  
+                      <mat-error *ngIf="addCusForm.controls.Prixtotal.hasError('required')">
+                        Champ obligatoire
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="text-inside">
+                    <mat-form-field class="small-form-field">
+                      <input matInput placeholder="Latitude" formControlName="latitude"  [(ngModel)]="data.latitude"required>
+  
+                      <mat-error *ngIf="addCusForm.controls.latitude.hasError('required')">
+                        Champ obligatoire
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="text-inside">
+                    <mat-form-field class="small-form-field">
+                      <input matInput placeholder="Longitude" formControlName="longitude" [(ngModel)]="data.longitude" required>
+  
+                      <mat-error *ngIf="addCusForm.controls.longitude.hasError('required')">
+                        Champ obligatoire
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </mat-grid-tile>
+  
+              </mat-grid-list>
+  
+            </fieldset>
+          </mat-card>
+  
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" class="postionement2">
+
+  
+            <div fxFlex="50" class="action-blurb" fxFlexOffset="20">
+  
+              <!--[disabled]="addCusForm.invalid"-->
+              <button mat-raised-button type="submit" color="primary" class="Update-btn"  (click)="modifierCommande()">
+                <mat-icon>add</mat-icon>
+                modifier
+              </button>
+            </div>
+  
+            <div fxFlex="50" class="action-blurb" fxFlexOffset="20">
+              <button mat-raised-button style="position: relative; bottom: 36px;left: 637px;"type="button" color="warn" class="Discard-btn" (click)="viderFroms()">
+                <mat-icon>cancel</mat-icon>
+                Annuler</button>
+            </div>
+          
+  
+        </div>
+  
+      </form>
+    </div>
+    
+  </div>

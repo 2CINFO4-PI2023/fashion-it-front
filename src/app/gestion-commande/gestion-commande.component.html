@@ -17,12 +17,19 @@
         <td>{{ commande.adresse }}</td>
         <td>{{ commande.adressEmail }}</td>
         <td>{{ commande.Prixtotal }}</td>
+        <td *ngIf="false">{{ commande.latitude }}</td>
+        <td *ngif="false">{{ commande.longitude }}</td>
         <td>
           <button (click)="deletecommande(commande._id)">Supprimer</button>
         </td>
         <td>
-          <button (click)="localisationcommande(commande._id)">localisation</button>
+          <button (click)="openMaps(commande._id)">localisation</button>
         </td>
+        <td>
+          <button (click)="openDialog(commande._id, commande.livreurId, commande.produits,commande.adresse,commande.adressEmail, commande.Prixtotal,commande.longitude,commande.latitude )">modifier</button>
+        </td>
+        
+        
       </tr>
     </tbody>
   </table>

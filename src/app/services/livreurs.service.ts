@@ -25,4 +25,22 @@ export class LivreursService {
     const apiUrl = `${this.url}livreurs/${_id}`;
     return this.http.delete<Livreur>(apiUrl);
   }
+  public getLivreurStatistics(): Observable<Livreur[]> {
+    const apiUrl = `${this.url}notelivreur`;
+    return this.http.get<any>(apiUrl);
+    
+  }
+  public getmeilleur(): Observable<Livreur[]> {
+    const apiUrl = `${this.url}notelivreur/Notelivreur`;
+    return this.http.get<Livreur[]>(apiUrl);
+  }
+  public modifiercommade(_id: string, data: any): Observable<Livreur> {
+    const apiUrl = `${this.url}livreurs/${_id}`;
+    return this.http.patch<Livreur>(apiUrl, data);
+  }
+
+ 
+ 
+ 
+
 }

@@ -1,1 +1,23 @@
-<p>gestion-notelivreur works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Numéro de téléphone</th>
+        <th>Adresse</th>
+        <th>Adresse email</th>
+        <!-- Ajoutez d'autres en-têtes de colonne ici -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let liv of livreurs">
+        <td>{{ liv.Nom }}</td>
+        <td>{{ liv.Prenom }}</td>
+        <td>{{ liv.NUMtelephone }}</td>
+        <td>{{ liv.adresse }}</td>
+        <td>{{ liv.adressEmail }}</td>
+      
+        <!-- Ajoutez d'autres cellules de données ici -->
+      </tr>
+    </tbody>
+  </table>

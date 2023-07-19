@@ -1,0 +1,13 @@
+<h2>Ajouter une commande</h2>
+<form (submit)=" ajouternotelivreurs()">
+  <div>
+    <label for="livreurId">ID du livreur :</label>
+    <input type="text" id="livreurId" [(ngModel)]="nouveauNotelivreur.livreurId" name="livreurId" required>
+  </div>
+  <div>
+    <label for="note">note :</label>
+    <input type="text" id="note" [(ngModel)]="nouveauNotelivreur.note" name="note" required>
+  </div>
+  <button type="submit">Ajouter</button>
+
+</form>

@@ -32,6 +32,12 @@ export class CommandeService{
     const apiUrl = `${this.url}commande/${_id}`;
     return this.http.get<Commande>(apiUrl);
   }
-
+  public modifiercommade(_id: string, data: any): Observable<Commande> {
+    const apiUrl = `${this.url}commande/${_id}`;
+    return this.http.patch<Commande>(apiUrl, data);
+  }
+  
 }
+
+
 

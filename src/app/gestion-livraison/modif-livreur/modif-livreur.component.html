@@ -1,0 +1,171 @@
+<div>
+  <div class="add-title">
+    <mat-toolbar class="toolbar-color py-4 mb-4" style="background-color:rgb(22, 77, 96);">
+      <div fxFlex fxLayout fxLayoutAlign="space-around center">
+        <h3>Modification</h3>
+      </div>
+    </mat-toolbar>
+  </div>
+</div>
+
+  <div>
+    <form [formGroup]="addCusForm" (change)="formChanged()">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card fxFlex="50">
+          <fieldset>
+
+            <mat-grid-list cols="3" [cols]="3" rowHeight="95px" (window:resize)="onResize($event)">
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="Nom" formControlName="Nom" [(ngModel)]="data.Nom"  required>
+
+                    <mat-error *ngIf="addCusForm.controls.Nom.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+             <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="Prenom" formControlName="Prenom" [(ngModel)]="data.Prenom" required>
+
+                    <mat-error *ngIf="addCusForm.controls.Prenom.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="NUMtelephone" formControlName="NUMtelephone" [(ngModel)]="data.NUMtelephone" required>
+
+                    <mat-error *ngIf="addCusForm.controls.NUMtelephone.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="adresse" formControlName="adresse" [(ngModel)]="data.adresse" required>
+
+                    <mat-error *ngIf="addCusForm.controls.adresse.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="adressEmail" formControlName="adressEmail"  [(ngModel)]="data.adressEmail"required>
+
+                    <mat-error *ngIf="addCusForm.controls.adressEmail.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="typeDEvehicule" formControlName="typeDEvehicule"  [(ngModel)]="data.typeDEvehicule"required>
+
+                    <mat-error *ngIf="addCusForm.controls.typeDEvehicule.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="age" formControlName="age"  [(ngModel)]="data.age"required>
+
+                    <mat-error *ngIf="addCusForm.controls.age.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="profession" formControlName="profession"  [(ngModel)]="data.profession"required>
+
+                    <mat-error *ngIf="addCusForm.controls.profession.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="text-inside">
+                  <mat-form-field class="small-form-field">
+                    <input matInput placeholder="sex" formControlName="sex" [(ngModel)]="data.sex" required>
+
+                    <mat-error *ngIf="addCusForm.controls.sex.hasError('required')">
+                      Champ obligatoire
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+            <mat-grid-tile>
+              <div class="text-inside">
+                <mat-form-field class="small-form-field">
+                  <input matInput placeholder="moyenneNote" formControlName="moyenneNote"  [(ngModel)]="data.moyenneNote"required>
+
+                  <mat-error *ngIf="addCusForm.controls.moyenneNote.hasError('required')">
+                    Champ obligatoire
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+            </mat-grid-tile>
+           
+
+
+            </mat-grid-list>
+
+          </fieldset>
+        </mat-card>
+
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center" class="postionement2">
+
+
+          <div fxFlex="50" class="action-blurb" fxFlexOffset="20">
+
+            <!--[disabled]="addCusForm.invalid"-->
+            <button mat-raised-button type="submit" color="primary" class="Update-btn"  (click)="modifierCommande()">
+              <mat-icon>add</mat-icon>
+              modifier
+            </button>
+          </div>
+
+          <div fxFlex="50" class="action-blurb" fxFlexOffset="20">
+            <button mat-raised-button style="position: relative; bottom: 36px;left: 637px;"type="button" color="warn" class="Discard-btn" (click)="viderFroms()">
+              <mat-icon>cancel</mat-icon>
+              Annuler</button>
+          </div>
+        
+
+      </div>
+
+    </form>
+  </div>
+  
