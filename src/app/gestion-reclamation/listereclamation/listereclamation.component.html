@@ -55,7 +55,7 @@
                   <th>Message</th>
                   <th>Date de création</th>
                   <th>Type de réclamation</th>
-                  <th>Actions</th> <!-- Ajout de la colonne "Actions" -->
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,16 +68,17 @@
                   <td>{{ item.dateCreation }}</td>
                   <td>{{ item.typeR }}</td>
                   <td>
-                    <button class="btn btn-sm btn-danger" (click)="supprimerReclamation(item._id)">Supprimer</button>
-                  </td> <!-- Ajout du bouton "Supprimer" -->
-                  <!-- Ajoutez d'autres colonnes ici si nécessaire -->
+                    <button class="btn btn-sm btn-danger mr-2" (click)="supprimerReclamation(item._id)">Supprimer</button>
+                    <button class="btn btn-sm btn-success" (click)="mettreAJourEtat(item._id)">Traitée</button>
+                    <span *ngIf="item.etat === 1" class="text-success ml-2">(Traitée)</span>
+                  </td>
                 </tr>
               </tbody>
             </table>
 
             <div *ngIf="reclamationSupprimee" class="alert alert-success">
               La Réclamation a été supprimée avec succès.
-            </div> <!-- Ajout de la div pour afficher le message de succès -->
+            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Reclamation } from '../model/reclamation';
 import { Url } from '../shared/Config';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,5 +33,10 @@ export class ReclamationService {
   getReclamationStats() {
     return this.http.get<any[]>(`${this.url}reclamation/reclamation-stats`);
   }
-  
+
+  mettreAJourEtatReclamation(id: string, etat: number) {
+    const url = `${this.url}reclamation/${id}`;
+    const body = { etat: etat };
+    return this.http.patch(url, body);
+  }
 }
