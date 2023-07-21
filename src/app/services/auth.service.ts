@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
-import jwt_decode from 'jwt-decode';
-import {Router} from "@angular/router";
-import {UserService} from "./user.service";
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +9,7 @@ import {UserService} from "./user.service";
 export class AuthService {
   private connectUrl = 'http://localhost:3300';
 
-  _id:any;
-  constructor(private http: HttpClient
-  ,
-              private router:Router,
-              private userService:UserService) {}
+  constructor(private http: HttpClient) {}
 
   register(user: any): Observable<any> {
     return this.http.post(`${this.connectUrl}/api/register`, user).pipe(
@@ -24,38 +17,20 @@ export class AuthService {
     );
   }
 
+
   logout(): Observable<any> {
     return this.http.get(`${this.connectUrl}/api/logout`).pipe(
-      tap(() => {
-        localStorage.clear();
-        this.router.navigate(['/']);
-      }),
       catchError(this.handleError)
     );
   }
 
-  login(username: string, password: string): Observable<string> {
-    const payload = { username, password };
-    return this.http.post<any>(`${this.connectUrl}/api/login`, payload).pipe(
-      tap(response => {
-        const token = response.token;
-        const decodedToken: any = jwt_decode(token);
-        this.userService.findUserByUsername(decodedToken.username).subscribe(response=>{
-          this._id=response._id;
-        });
-        localStorage.setItem('id',this._id);
-        localStorage.setItem('token', token);
-        localStorage.setItem('username', decodedToken.username);
-        localStorage.setItem('email', decodedToken.email);
-      }),
-      map(response => response.message),
+  login(email: string, password: string): Observable<any> {
+    const payload = { email, password };
+    return this.http.post(`${this.connectUrl}/api/login`, payload).pipe(
       catchError(this.handleError)
     );
-    console.log(localStorage)
   }
-  changePassword(userId: string): Observable<any> {
-    return this.http.post(`${this.connectUrl}/api/password`, { _id: userId });
-  }
+
   googleLogin(): void {
     window.location.href = `${this.connectUrl}/api/google`;
   }
@@ -67,15 +42,12 @@ export class AuthService {
 
       return this.http
         .post(`${this.connectUrl}/api/google/callback`, { code })
-        .pipe(
-          tap(response => {
-          }),
-          catchError(this.handleError)
-        );
+        .pipe(catchError(this.handleError));
     } else {
       return throwError('Invalid callback URL');
     }
   }
+
 
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);

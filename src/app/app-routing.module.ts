@@ -1,70 +1,66 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BlankComponent } from './layouts/blank/blank.component';
-import { FullComponent } from './layouts/full/full.component';
-import {UserdashComponent} from "./userpages/userdash/userdash.component";
-import {AppSideLoginComponent} from "./pages/authentication/login/login.component";
-import {AppSideRegisterComponent} from "./pages/authentication/register/register.component";
-import {UsercenterComponent} from "./pages/usercenter/usercenter.component";
-import {AllproductsComponent} from "./userpages/allproducts/allproducts.component";
-import {CheckoutComponent} from "./userpages/checkout/checkout.component";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
+import {RegisterComponent} from "./views/register/register.component"
+import { LoginComponent } from "./views/login/login.component";
+import { UserListComponent } from "./views/user-list/user-list.component";
+import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
+import {CategorieComponent} from "./views/categorie/categorie.component";
 
 const routes: Routes = [
   {
-    path: '',
-component: AppSideLoginComponent,
-    pathMatch: 'full',
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
   },
   {
-    path: 'register',
-    component: AppSideRegisterComponent,
-    pathMatch: 'full',
+    path: "login",
+    component: LoginComponent,
   },
   {
-    path: 'userlanding',
-    component: FullComponent,
+    path: "register",
+    component: RegisterComponent,
+  },
+  {
+    path: "userlist",
+    component: UserListComponent,
+  },{
+    path: "categories",
+    component: CategorieComponent,
+  },
+  {
+    path: "admin",
+    component: AdminLayoutComponent,
     children: [
       {
-        path: '',
-        loadChildren: () =>
-          import('./pages/pages.module').then((m) => m.PagesModule),
+        path: "",
+        redirectTo: "dashboard",
+        pathMatch: "full"
       },
       {
-        path: 'dashboard',
-        component: UserdashComponent, // Add UserdashComponent to /userlanding/dashboard
+        path: "dashboard",
+        loadChildren: () => import('./pages/examples/dashboard/dashboard.module').then(x => x.DashboardModule)
       },
       {
-        path:'usercenter',
-        component: UsercenterComponent
-      },
-      {
-        path:'allprod',
-        component: AllproductsComponent
-      },
-      {
-        path:'checkout',
-        component: CheckoutComponent
+        path: "components",
+        loadChildren: () => import('./pages/examples/components/components.module').then(x => x.ComponentsPageModule)
       }
-      // Add other components here as needed
-    ],
-  },
-  {
-    path: 'authentication',
-    component: BlankComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('./pages/authentication/authentication.module').then(
-            (m) => m.AuthenticationModule
-          ),
-      },
-    ],
-  },
+    ]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      scrollPositionRestoration: "enabled",
+      anchorScrolling: "enabled",
+      scrollOffset: [0, 64]
+    })
+  ],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

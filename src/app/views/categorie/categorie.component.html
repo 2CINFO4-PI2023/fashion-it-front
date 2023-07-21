@@ -1,0 +1,98 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12">
+      <h4 class="card-title">Categories List</h4>
+      <button class="btn btn-primary btn-sm" (click)="openAddCategorieModal()">Add New Category</button>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th class="text-right">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let categorie of categorieList">
+            <td>{{ categorie._id }}</td>
+            <td>{{ categorie.name }}</td>
+            <td>{{ categorie.description }}</td>
+            <td class="text-right">
+              <button class="btn btn-danger btn-sm" (click)="openDeleteConfirmation(categorie)">Delete</button>
+              <!-- Add edit button to open the edit modal -->
+              <button class="btn btn-primary btn-sm" (click)="openEditCategorieModal(categorie)">Edit</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="showAddCategorieModal">
+  <div class="modal-backdrop fade show"></div>
+  <div class="modal fade show" tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Category</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeAddCategorieModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="addCategorie()" #categorieForm="ngForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newCategorie.name" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newCategorie.description" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeAddCategorieModal()">Cancel</button>
+              <button type="submit" class="btn btn-primary">Add Category</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showEditCategorieModal">
+  <div class="modal-backdrop fade show"></div>
+  <div class="modal fade show" tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Category</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeEditCategorieModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="editCategorie()" #editCategorieForm="ngForm">
+            <div class="form-group">
+              <label for="editName">Name</label>
+              <input type="text" class="form-control" id="editName" name="editName" [(ngModel)]="editedCategorie.name" required>
+            </div>
+            <div class="form-group">
+              <label for="editDescription">Description</label>
+              <input type="text" class="form-control" id="editDescription" name="editDescription" [(ngModel)]="editedCategorie.description" required>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+

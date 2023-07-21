@@ -1,78 +1,47 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { ToastrModule } from "ngx-toastr";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-// icons
-import { TablerIconsModule } from 'angular-tabler-icons';
-import * as TablerIcons from 'angular-tabler-icons/icons';
-
-//Import all material modules
-import { MaterialModule } from './material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-//Import Layouts
-import { FullComponent } from './layouts/full/full.component';
-import { BlankComponent } from './layouts/blank/blank.component';
-
-// Vertical Layout
-import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
-import { HeaderComponent } from './layouts/full/header/header.component';
-import { BrandingComponent } from './layouts/full/sidebar/branding.component';
-import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
-import {ToastrModule} from "ngx-toastr";
-import {UserdashComponent} from "./userpages/userdash/userdash.component";
-import {UsercenterComponent} from "./pages/usercenter/usercenter.component";
-import {ProductCardComponent} from "./userpages/product-card/product-card.component";
-import {AddproductComponent} from "./userpages/addproduct/addproduct.component";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSelectModule} from "@angular/material/select";
-import {AllproductsComponent} from "./userpages/allproducts/allproducts.component";
-import {ConfirmationDialogComponent} from "./components/confirmation-dialog/confirmation-dialog.component";
-import {CheckoutComponent} from "./userpages/checkout/checkout.component";
-
-//PrimeNG
-
+import { AppComponent } from "./app.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { ComponentsModule } from "./components/components.module";
+import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { LoginComponent } from './views/login/login.component';
+import { UserListComponent } from './views/user-list/user-list.component';
+import { RegisterComponent } from './views/register/register.component';
+import { CategorieComponent } from './views/categorie/categorie.component';
+import { ConfirmationComponent } from './views/confirmation/confirmation.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
-    FullComponent,
-    BlankComponent,
-    SidebarComponent,
-    HeaderComponent,
-    BrandingComponent,
-    AppNavItemComponent,
-    UserdashComponent,
-    UsercenterComponent,
-    ProductCardComponent,
-    AddproductComponent,
-    AllproductsComponent,
-    ConfirmationDialogComponent,
-    CheckoutComponent
-
+    AdminLayoutComponent,
+    AuthLayoutComponent,
+    RtlLayoutComponent,
+    LoginComponent,
+    RegisterComponent,
+    AppComponent,
+    UserListComponent,
+    CategorieComponent,
+    ConfirmationComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
+    CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    TablerIconsModule.pick(TablerIcons),
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
+    RouterModule,
+    AppRoutingModule,
     ToastrModule.forRoot(),
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-
+    ComponentsModule,
+    MatDialogModule
   ],
-  exports: [TablerIconsModule],
-  bootstrap: [AppComponent],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

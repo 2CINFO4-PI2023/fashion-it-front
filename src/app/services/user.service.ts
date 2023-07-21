@@ -9,24 +9,24 @@ import {User} from "../models/user";
 })
 export class UserService {
   private baseUrl = 'http://localhost:3300/api/user';
-
+  selectedUserId: any;
   constructor(private http: HttpClient) {}
 
 
   findAll(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/findall`);
+    return this.http.get(`${this.baseUrl}/all`);
   }
 
-  findUser(userID: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/finduser/${userID}`);
+  findUser(_id: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/find/`,_id);
   }
 
   addUser(user: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/adduser`, user);
+    return this.http.post(`${this.baseUrl}/add`, user);
   }
 
-  deleteUser(userID: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/deleteuser/${userID}`);
+  deleteUser(_id: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/delete/`,_id);
   }
 
   editUser(_id: string, userData: any): Observable<any> {
@@ -35,8 +35,8 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/update/`, userData);
   }
 
-  activatePremium(userID: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/activatepremium/${userID}`, {});
+  activatePremium(_id: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/premium`, {_id});
   }
 
   findUserByUsername(username: string): Observable<User> {
