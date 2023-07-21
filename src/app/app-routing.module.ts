@@ -1,101 +1,70 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
-
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
-import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { BlankComponent } from './layouts/blank/blank.component';
+import { FullComponent } from './layouts/full/full.component';
+import {UserdashComponent} from "./userpages/userdash/userdash.component";
+import {AppSideLoginComponent} from "./pages/authentication/login/login.component";
+import {AppSideRegisterComponent} from "./pages/authentication/register/register.component";
+import {UsercenterComponent} from "./pages/usercenter/usercenter.component";
+import {AllproductsComponent} from "./userpages/allproducts/allproducts.component";
+import {CheckoutComponent} from "./userpages/checkout/checkout.component";
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full"
+    path: '',
+component: AppSideLoginComponent,
+    pathMatch: 'full',
   },
   {
-    path: "",
-    component: AdminLayoutComponent,
+    path: 'register',
+    component: AppSideRegisterComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'userlanding',
+    component: FullComponent,
     children: [
       {
-        path: "",
-        loadChildren: () => import('./pages/examples/dashboard/dashboard.module').then(x => x.DashboardModule)
+        path: '',
+        loadChildren: () =>
+          import('./pages/pages.module').then((m) => m.PagesModule),
       },
       {
-        path: "components",
-        loadChildren: () => import('./pages/examples/components/components.module').then(x=>x.ComponentsPageModule)
+        path: 'dashboard',
+        component: UserdashComponent, // Add UserdashComponent to /userlanding/dashboard
       },
       {
-        path: "forms",
-        loadChildren: () => import('./pages/examples/forms/forms.module').then(x=>x.Forms)
+        path:'usercenter',
+        component: UsercenterComponent
       },
       {
-        path: "tables",
-        loadChildren: () => import('./pages/examples/tables/tables.module').then(x=>x.TablesModule)
+        path:'allprod',
+        component: AllproductsComponent
       },
       {
-        path: "maps",
-        loadChildren: () => import('./pages/examples/maps/maps.module').then(x=>x.MapsModule)
-      },
-      {
-        path: "widgets",
-        loadChildren: () => import('./pages/examples/widgets/widgets.module').then(x=>x.WidgetsModule)
-      },
-      {
-        path: "charts",
-        loadChildren: () => import('./pages/examples/charts/charts.module').then(x=>x.ChartsModule)
-      },
-      {
-        path: "calendar",
-        loadChildren: () => import('./pages/examples/calendar/calendar.module').then(x=>x.CalendarModulee)
-      },
-      {
-        path: "",
-        loadChildren: () => import('./pages/examples/pages/user/user-profile.module').then(x=>x.UserModule)
-      },
-      {
-        path: "",
-        loadChildren: () => import('./pages/examples/pages/timeline/timeline.module').then(x=>x.TimelineModule)
+        path:'checkout',
+        component: CheckoutComponent
       }
-    ]
+      // Add other components here as needed
+    ],
   },
   {
-    path: "",
-    component: AuthLayoutComponent,
+    path: 'authentication',
+    component: BlankComponent,
     children: [
       {
-        path: "pages",
-        loadChildren: () => import('./pages/examples/pages/pages.module').then(x=>x.PagesModule)
-      }
-    ]
+        path: '',
+        loadChildren: () =>
+          import('./pages/authentication/authentication.module').then(
+            (m) => m.AuthenticationModule
+          ),
+      },
+    ],
   },
-  {
-    path: "",
-    component: RtlLayoutComponent,
-    children: [
-      {
-        path: "pages",
-        loadChildren: () => import('./pages/examples/pages/rtl/rtl.module').then(x=>x.RtlModule)
-      }
-    ]
-  },
-  {
-    path: "**",
-    redirectTo: "dashboard"
-  }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true,
-      scrollPositionRestoration: "enabled",
-      anchorScrolling: "enabled",
-      scrollOffset: [0, 64]
-    })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

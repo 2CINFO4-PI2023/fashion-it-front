@@ -1,0 +1,11 @@
+<button mat-raised-button color="primary" (click)="openModal()">Add New Product</button>
+
+<div class="divider"></div>
+<div class="product-cards-container">
+  <div *ngIf="productcards && productcards.length" class="row justify-content-center">
+    <div  class="col-12 col-sm-6 col-lg-4" *ngFor="let productcard of productcards">
+      <app-product-card [productcard]="productcard" class="cardWithShadow productcard overflow-hidden">
+      </app-product-card>
+    </div>
+  </div>
+</div>
