@@ -7,11 +7,13 @@ import { LoginComponent } from "./views/login/login.component";
 import { UserListComponent } from "./views/user-list/user-list.component";
 import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 import {CategorieComponent} from "./views/categorie/categorie.component";
+import {SmallDashboardComponent} from "./small-dashboard/small-dashboard.component";
+import {RoleComponent} from "./views/role/role.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "login",
+    redirectTo: "smalldashboard",
     pathMatch: "full"
   },
   {
@@ -25,29 +27,45 @@ const routes: Routes = [
   {
     path: "userlist",
     component: UserListComponent,
-  },{
+  },
+  {
     path: "categories",
     component: CategorieComponent,
   },
   {
-    path: "admin",
-    component: AdminLayoutComponent,
+    path: "role",
+    component: RoleComponent,
+  },
+  {
+    path: 'smalldashboard',
+    component: SmallDashboardComponent,
     children: [
-      {
-        path: "",
-        redirectTo: "dashboard",
-        pathMatch: "full"
-      },
-      {
-        path: "dashboard",
-        loadChildren: () => import('./pages/examples/dashboard/dashboard.module').then(x => x.DashboardModule)
-      },
-      {
-        path: "components",
-        loadChildren: () => import('./pages/examples/components/components.module').then(x => x.ComponentsPageModule)
-      }
-    ]
-  }
+      { path: '', redirectTo: 'userlist', pathMatch: 'full' },
+      { path: 'userlist', component: UserListComponent },
+      { path: 'categories', component: CategorieComponent },
+      { path: 'role', component: RoleComponent }
+
+    ],
+  },
+  // {
+  //   path: "admin",
+  //   component: AdminLayoutComponent,
+  //   children: [
+  //     {
+  //       path: "",
+  //       redirectTo: "dashboard",
+  //       pathMatch: "full"
+  //     },
+  //     {
+  //       path: "dashboard",
+  //       loadChildren: () => import('./pages/examples/dashboard/dashboard.module').then(x => x.DashboardModule)
+  //     },
+  //     {
+  //       path: "components",
+  //       loadChildren: () => import('./pages/examples/components/components.module').then(x => x.ComponentsPageModule)
+  //     }
+  //   ]
+  // }
 ];
 
 @NgModule({

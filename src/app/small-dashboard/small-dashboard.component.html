@@ -1,0 +1,20 @@
+<div class="container">
+<div class="sidebar-mini" style="margin-top: 10px">
+    <h2>Admin Dashboard</h2>
+    <button class=" btn btn-primary mr-1" (click)="showComponent('users')">User List</button>
+    <button class=" btn btn-primary mr-1" (click)="showComponent('categories')">Categories</button>
+    <button class=" btn btn-primary mr-1" (click)="showComponent('role')">Roles</button>
+  </div>
+  </div>
+
+  <div class="content" *ngIf="selectedComponent!=null||selectedComponent!=''">
+    <ng-container *ngIf="selectedComponent === 'users'">
+      <app-user-list></app-user-list>
+    </ng-container>
+    <ng-container *ngIf="selectedComponent === 'categories'">
+      <app-categorie></app-categorie>
+    </ng-container>
+    <ng-container *ngIf="selectedComponent === 'role'">
+      <app-role></app-role>
+    </ng-container>
+  </div>

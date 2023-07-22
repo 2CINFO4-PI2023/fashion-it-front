@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import {AuthService} from "../../services/auth.service"
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-user-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   focus = false;
   focus1 = false;
 
-  constructor(private authService:AuthService) {}
+  constructor(private authService:AuthService,
+              private router:Router) {}
 
   login() {
     console.log(this.email)
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService.login( this.email, this.password ).subscribe(
       response => {
         console.log('Login successful:', response);
+        this.router.navigate(['/userlist'])
       },
       error => {
         console.error('Login failed:', error);

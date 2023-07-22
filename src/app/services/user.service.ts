@@ -62,7 +62,7 @@ export class UserService {
     user.email = response.email;
     user.password = response.password;
     user.age = response.age;
-    user.type = response.type;
+    user.rolename = response.role.roleName;
     user.adresse = response.adresse;
     user.genre = response.genre;
     user.phone = response.phone;

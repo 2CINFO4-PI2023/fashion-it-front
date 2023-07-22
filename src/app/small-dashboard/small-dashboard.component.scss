@@ -1,0 +1,17 @@
+/* sidebar-with-buttons.component.css */
+.container {
+  display: flex;
+  flex-direction: row; /* Ensure elements are displayed in a row */
+  justify-content: center; /* Center the sidebar horizontally */
+  align-items: center; /* Center the sidebar vertically */
+}
+
+.sidebar {
+  flex: 1; /* The sidebar takes one-third of the container's width */
+  padding: 20px;
+}
+
+.content {
+  flex: 2; /* The content area takes the rest of the space (two-thirds) */
+  padding: 20px;
+}

@@ -17,6 +17,8 @@ import { RegisterComponent } from './views/register/register.component';
 import { CategorieComponent } from './views/categorie/categorie.component';
 import { ConfirmationComponent } from './views/confirmation/confirmation.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { SmallDashboardComponent } from './small-dashboard/small-dashboard.component';
+import { RoleComponent } from './views/role/role.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     AppComponent,
     UserListComponent,
     CategorieComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    SmallDashboardComponent,
+    RoleComponent
   ],
   imports: [
     CommonModule,

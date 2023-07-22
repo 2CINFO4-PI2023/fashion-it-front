@@ -4,11 +4,13 @@ export class User {
     email: string;
     password: string;
     age: string;
-    type: string;
+    rolename: string;
     adresse: string;
     genre: string;
     phone: string;
-    role: string;
+    role: {
+      role:string,
+      roleName:string
+    };
     premium: string;
   }
-  

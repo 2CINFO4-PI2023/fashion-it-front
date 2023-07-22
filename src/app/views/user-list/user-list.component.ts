@@ -50,6 +50,7 @@ export class UserListComponent implements OnInit{
       (response) => {
         if (response.success) {
           this.toastr.success(`User is now premium ${response.message}`, 'Success!');
+          location.reload();
         } else {
           this.toastr.error(response.message, 'Error!');
         }
