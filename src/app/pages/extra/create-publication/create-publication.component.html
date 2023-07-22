@@ -1,0 +1,33 @@
+<h2>Create New Post</h2>
+<form [formGroup]="publicationForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Title" formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Content Type</mat-label>
+    <mat-select formControlName="contentType">
+      <mat-option value="text">Text</mat-option>
+      <mat-option value="image">Image</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- For text content -->
+  <mat-form-field *ngIf="publicationForm.get('contentType')?.value === 'text'">
+    <textarea matInput placeholder="Content" formControlName="content"></textarea>
+  </mat-form-field>
+
+ <!-- Show file input for image if content type is 'image' -->
+<input *ngIf="publicationForm.get('contentType')?.value === 'image'" type="file" (change)="onImageSelected($event)" />
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="public">Public</mat-option>
+      <mat-option value="private">Private</mat-option>
+      <mat-option value="specific">Specific</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Create Publication</button>
+</form>

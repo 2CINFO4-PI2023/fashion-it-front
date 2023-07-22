@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class CheckoutService {
-  private apiUrl = 'http://localhost:3300/';
+  private apiUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 

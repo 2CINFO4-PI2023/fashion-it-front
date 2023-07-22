@@ -1,0 +1,21 @@
+<h2>Update Post</h2>
+<form [formGroup]="publicationForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Title" formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Content" formControlName="content"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="public">Public</mat-option>
+      <mat-option value="private">Private</mat-option>
+      <mat-option value="specific">Specific</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Update Post</button>
+</form>

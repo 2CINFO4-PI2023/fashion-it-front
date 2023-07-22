@@ -38,6 +38,9 @@ import {CheckoutComponent} from "./userpages/checkout/checkout.component";
 import {StripeModule} from "stripe-angular";
 import {StripeComponent} from "./userpages/stripe/stripe.component";
 import {UpdateProductModalComponent} from "./components/update-product-modal/update-product-modal.component";
+import { PublicationComponent } from './pages/extra/publication/publication.component';
+import { CreatePublicationComponent } from './pages/extra/create-publication/create-publication.component';
+import { UpdatePublicationComponent } from './pages/extra/update-publication/update-publication.component';
 
 //PrimeNG
 
@@ -59,7 +62,10 @@ import {UpdateProductModalComponent} from "./components/update-product-modal/upd
     ConfirmationDialogComponent,
     CheckoutComponent,
     StripeComponent,
-    UpdateProductModalComponent
+    UpdateProductModalComponent,
+    PublicationComponent,
+    CreatePublicationComponent,
+    UpdatePublicationComponent,
 
   ],
   imports: [

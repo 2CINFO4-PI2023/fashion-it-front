@@ -10,7 +10,7 @@ import {UserService} from "./user.service";
   providedIn: 'root'
 })
 export class AuthService {
-  private connectUrl = 'http://localhost:3300';
+  private connectUrl = 'http://localhost:3000';
    authorizationCode: string ;
 
   _id:any;

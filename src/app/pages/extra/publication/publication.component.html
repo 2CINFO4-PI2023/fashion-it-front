@@ -1,0 +1,53 @@
+<app-create-publication></app-create-publication>
+<h2>Posts</h2>
+<ng-template [ngIf]="publications">
+      <mat-card *ngFor="let publication of publications" class="cardWithShadow">
+
+      <mat-card-content>
+        <button mat-raised-button color="primary" (click)="updatePublication(publication)">
+            Update
+          </button>
+          <button mat-raised-button color="warn" (click)="deletePublication(publication._id)">
+            Delete
+          </button>
+      
+        <p>Status: {{ publication.status }}</p>
+        <mat-card-title>{{ publication.title }}</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">{{ publication.content }}</mat-card-subtitle>
+        <h4>Comments:</h4>
+        <form (ngSubmit)="onCommentSubmit()">
+            <mat-form-field>
+              <textarea matInput placeholder="Add your comment" [(ngModel)]="newCommentContent" name="comment"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Add Comment</button>
+          </form>
+        <ul>
+          <li *ngFor="let comment of publication.comments">
+        <em>{{ comment.content }}</em>
+          </li>
+        </ul>
+
+        <h4>Ratings:</h4>
+        <form (ngSubmit)="onRatingSubmit()">
+            <mat-form-field>
+              <input matInput placeholder="Add your rating (1-5)" type="number" min="1" max="5" [(ngModel)]="newRating" name="rating">
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Add Rating</button>
+          </form>
+        <ul>
+            <li *ngFor="let rating of publication.ratings">
+              <em>{{ rating.rating }}</em>
+              <div class="stars-container">
+                <div class="star" *ngFor="let star of getStarRating(rating.rating).split(' ')">
+                  <mat-icon>{{ star }}</mat-icon>
+                </div>
+              </div>
+            </li>
+          </ul>
+          
+      </mat-card-content>
+    </mat-card>
+
+    <br /> <!-- Add spacing between cards if needed -->
+</ng-template>
+
