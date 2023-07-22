@@ -27,6 +27,7 @@ export class ProduitService {
   addProduct(product: Produit, imageFile: File): Observable<any> {
     const formData = new FormData();
     formData.append('categorieId', product.categorieId);
+    formData.append('user', product.user!);
     formData.append('name', product.name);
     formData.append('description', product.description);
     formData.append('prix', product.prix.toString());

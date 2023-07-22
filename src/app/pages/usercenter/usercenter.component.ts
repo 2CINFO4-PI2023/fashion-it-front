@@ -31,7 +31,7 @@ export class UsercenterComponent {
     this.initForm();
     this.username = localStorage.getItem('username')!;
     this.userService.findUserByUsername(this.username).subscribe(user => {
-      this.currentuser = user;
+      this.currentuser = user.response;
       console.log(this.currentuser);
 
     });

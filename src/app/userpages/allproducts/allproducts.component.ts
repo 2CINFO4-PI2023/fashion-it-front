@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Produit} from "../../models/produit";
 import {ProduitService} from "../../services/produit.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -9,7 +9,7 @@ import {BasketService} from "../../services/basket.service";
   templateUrl: './allproducts.component.html',
   styleUrls: ['./allproducts.component.scss']
 })
-export class AllproductsComponent implements OnInit {
+export class AllproductsComponent implements OnInit , OnDestroy {
   productcards: Produit[] = [];
   filteredProductcards: Produit[] = [];
   searchTerm: string = '';
@@ -33,6 +33,8 @@ export class AllproductsComponent implements OnInit {
         product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
+  }
+  ngOnDestroy() {
   }
 
   // Method to clear the search term

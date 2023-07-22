@@ -20,9 +20,16 @@ export class AppSideLoginComponent {
   login() {
     this.authService.login( this.email, this.password ).subscribe(
       response => {
+        console.log(localStorage.getItem('username'))
+        if (localStorage.getItem('username')==='admin'){
+          const newWindowUrl = 'http://localhost:60531/#/userlist';
+          window.open(newWindowUrl, '_blank');
+        } else {
+          this.router.navigate(['/userlanding']);
+
+        }
         console.log('Login successful:', response);
         this.toastr.success(response, 'Welcome');
-        this.router.navigate(['/userlanding']);
 
       },
       error => {

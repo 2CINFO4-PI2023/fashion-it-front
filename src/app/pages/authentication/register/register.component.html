@@ -38,7 +38,7 @@
 
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Type</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <mat-select formControlName="type">
+              <mat-select formControlName="rolename">
                 <mat-option value="normal">Normal</mat-option>
                 <mat-option value="premium">Premium</mat-option>
               </mat-select>
@@ -65,7 +65,7 @@
           <span class="d-block f-w-500 text-center m-t-24">
             Already have an Account?
             <a
-              [routerLink]="['/login']"
+              [routerLink]="['']"
               class="text-decoration-none text-primary f-w-500 f-s-14"
             >
               Sign In

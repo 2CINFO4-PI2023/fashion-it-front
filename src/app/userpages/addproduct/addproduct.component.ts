@@ -30,7 +30,7 @@ export class AddproductComponent {
   imageFile: File | null = null;
   newProductForm!: FormGroup;
   categorieList: Categorie[] = [];
-
+  userId:any;
 
   constructor(
     private dialogRef: MatDialogRef<AddproductComponent>,
@@ -41,6 +41,8 @@ export class AddproductComponent {
   ) {
     this.initForm();
     this.loadCategories();
+    this.userId=localStorage.getItem('id')!;
+
   }
   loadCategories(): void {
     this.categorieService.getAllCats().subscribe((categories) => {
@@ -48,15 +50,14 @@ export class AddproductComponent {
     });
   }
   onSubmit(): void {
-    console.log('here')
-    console.log(this.newProductForm.valid)
     console.log(this.newProductForm)
     console.log(this.imageFile)
+    console.log(this.userId)
     if (this.newProductForm.valid) {
       const formValues = this.newProductForm.value;
       if (this.imageFile && formValues.name && formValues.prix) {
         const newProduct: Produit = {
-          user:localStorage.getItem('id')!,
+          user:this.userId,
           categorieId: formValues.categorieId,
           name: formValues.name,
           description: formValues.description,

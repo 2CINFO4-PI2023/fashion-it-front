@@ -6,6 +6,7 @@ import {ProduitService} from "../../services/produit.service";
 import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UpdateProductModalComponent} from "../../components/update-product-modal/update-product-modal.component";
 
 @Component({
   selector: 'app-product-card',
@@ -14,26 +15,31 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ProductCardComponent {
   @Input() productcard: Produit;
+
   constructor(
     private basketService: BasketService,
     private router: Router,
-    private productService:ProduitService,
+    private productService: ProduitService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
   ) {
   }
+
   addToBasket(product: Produit) {
     console.log('here')
     this.basketService.addToBasket(product);
   }
+
   isShowAddToCartButton(): boolean {
     // Check if the current URL contains '/allprod'
     return this.router.url.includes('/allprod');
   }
+
   isShowEditDeleteButtons(): boolean {
     // Check if the current URL contains '/allprod'
-    return this.router.url.includes('/allprod'); //change to dashboard
+    return this.router.url.includes('/dashboard');
   }
+
   deleteProduct(productId: string): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '250px',
@@ -41,24 +47,25 @@ export class ProductCardComponent {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-        // User confirmed deletion
-        this.productService.deleteProduct(productId).subscribe(
-          (deletedProduct) => {
-            // Handle successful deletion
-            this.snackBar.open('Product deleted successfully!', 'Close', {
-              duration: 2000,
-            });
+      // User confirmed deletion
+      this.productService.deleteProduct(productId).subscribe(
+        (deletedProduct) => {
+          // Handle successful deletion
+          this.snackBar.open('Product deleted successfully!', 'Close', {
+            duration: 2000,
+          });
           location.reload()
-          },
-          (error) => {
-            this.snackBar.open('Error deleting product', 'Close', {
-              duration: 2000,
-            });
-          }
-        );
+        },
+        (error) => {
+          this.snackBar.open('Error deleting product', 'Close', {
+            duration: 2000,
+          });
+        }
+      );
 
     });
   }
+
   toggleFavorite(product: Produit): void {
     const isFavorite = !product.favoris;
 
@@ -75,5 +82,18 @@ export class ProductCardComponent {
         });
       }
     );
+  }
+
+  openUpdateModal(productcard: Produit): void {
+    const dialogRef = this.dialog.open(UpdateProductModalComponent, {
+      data: productcard
+    });
+
+    dialogRef.afterClosed().subscribe((updatedProduct: Produit | undefined) => {
+      if (updatedProduct) {
+        console.log('Product updated:', updatedProduct);
+        location.reload();
+      }
+    });
   }
 }

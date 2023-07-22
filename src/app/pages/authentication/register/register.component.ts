@@ -20,7 +20,7 @@ export class AppSideRegisterComponent {
     age: new FormControl('', [Validators.required, Validators.min(18)]),
     gender: new FormControl('', [Validators.required]),
     addresse: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required]),
+    rolename: new FormControl('', [Validators.required]),
   });
 
   get f() {
@@ -33,7 +33,7 @@ export class AppSideRegisterComponent {
         response => {
           console.log('Registration successful:', response);
           this.toastr.success(response, 'Welcome');
-          this.router.navigate(['/userpage']);
+          this.router.navigate(['']);
         },
         error => {
           console.error('Registration error:', error);

@@ -25,16 +25,19 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog, private authservice:AuthService,
+  constructor( private authservice:AuthService,
               private router: Router,
               private basketService: BasketService
   ) {}
 
   logout(){
     this.authservice.logout();
+    localStorage.clear();
+    this.router.navigate(['']);
 
   }
   shoppingCard(){
+    this.router.navigate(['/userlanding/checkout']);
 
   }
   basketItemsCount(): number {

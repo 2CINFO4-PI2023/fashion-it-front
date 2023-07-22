@@ -23,6 +23,6 @@
   </table>
 
   <div class="cart-buttons">
-    <button mat-raised-button color="primary" class="checkout-button">Checkout</button>
+    <app-stripe [totalAmount]="calculateTotalAmount()"></app-stripe>
   </div>
 </div>

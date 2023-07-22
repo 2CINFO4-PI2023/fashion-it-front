@@ -11,6 +11,7 @@ import {UserService} from "./user.service";
 })
 export class AuthService {
   private connectUrl = 'http://localhost:3300';
+   authorizationCode: string ;
 
   _id:any;
   constructor(private http: HttpClient
@@ -27,11 +28,11 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.get(`${this.connectUrl}/api/logout`).pipe(
       tap(() => {
-        localStorage.clear();
-        this.router.navigate(['/']);
       }),
       catchError(this.handleError)
     );
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
   login(username: string, password: string): Observable<string> {
@@ -41,9 +42,11 @@ export class AuthService {
         const token = response.token;
         const decodedToken: any = jwt_decode(token);
         this.userService.findUserByUsername(decodedToken.username).subscribe(response=>{
-          this._id=response._id;
+          this._id=response.response._id;
+          console.log(this._id);
+          localStorage.setItem('id',this._id);
         });
-        localStorage.setItem('id',this._id);
+        console.log(localStorage.getItem('id'));
         localStorage.setItem('token', token);
         localStorage.setItem('username', decodedToken.username);
         localStorage.setItem('email', decodedToken.email);
@@ -51,7 +54,7 @@ export class AuthService {
       map(response => response.message),
       catchError(this.handleError)
     );
-    console.log(localStorage)
+
   }
   changePassword(userId: string): Observable<any> {
     return this.http.post(`${this.connectUrl}/api/password`, { _id: userId });
@@ -64,7 +67,7 @@ export class AuthService {
     if (window.location.pathname === '/api/google/callback') {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
-
+      this.storeAuthorizationCode(code!);
       return this.http
         .post(`${this.connectUrl}/api/google/callback`, { code })
         .pipe(
@@ -80,5 +83,12 @@ export class AuthService {
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
     return throwError('Something went wrong. Please try again later.');
+  }
+  storeAuthorizationCode(code: string): void {
+    this.authorizationCode = code;
+  }
+
+  getAuthorizationCode(): string {
+    return this.authorizationCode;
   }
 }

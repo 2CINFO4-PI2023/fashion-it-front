@@ -8,6 +8,7 @@ import {AppSideRegisterComponent} from "./pages/authentication/register/register
 import {UsercenterComponent} from "./pages/usercenter/usercenter.component";
 import {AllproductsComponent} from "./userpages/allproducts/allproducts.component";
 import {CheckoutComponent} from "./userpages/checkout/checkout.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ component: AppSideLoginComponent,
   {
     path: 'userlanding',
     component: FullComponent,
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

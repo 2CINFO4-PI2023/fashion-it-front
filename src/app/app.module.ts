@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
@@ -34,6 +35,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {AllproductsComponent} from "./userpages/allproducts/allproducts.component";
 import {ConfirmationDialogComponent} from "./components/confirmation-dialog/confirmation-dialog.component";
 import {CheckoutComponent} from "./userpages/checkout/checkout.component";
+import {StripeModule} from "stripe-angular";
+import {StripeComponent} from "./userpages/stripe/stripe.component";
+import {UpdateProductModalComponent} from "./components/update-product-modal/update-product-modal.component";
 
 //PrimeNG
 
@@ -53,7 +57,9 @@ import {CheckoutComponent} from "./userpages/checkout/checkout.component";
     AddproductComponent,
     AllproductsComponent,
     ConfirmationDialogComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    StripeComponent,
+    UpdateProductModalComponent
 
   ],
   imports: [
@@ -70,6 +76,8 @@ import {CheckoutComponent} from "./userpages/checkout/checkout.component";
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    StripeModule.forRoot('sk_test_51NQV6mI1OqZaz5EKRStYZb5vbq7rFmbi86Y8ZISfvbKrGju7Z5kTf2szqJK3HFdr93IRzPj3w0uVovGb4oNzy1yq00y0wKwtWr')
+
 
   ],
   exports: [TablerIconsModule],

@@ -1,0 +1,47 @@
+<h2 mat-dialog-title class="modal-title">Update Product</h2>
+<mat-dialog-content>
+  <form [formGroup]="updateForm">
+    <mat-form-field class="form-field">
+      <mat-label>Product Name</mat-label>
+      <input matInput formControlName="name" placeholder="Product Name" required />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="prix" placeholder="Price" type="number" required />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Description" required></textarea>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Brand</mat-label>
+      <input matInput formControlName="marque" placeholder="Brand" required />
+    </mat-form-field>
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Size</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <mat-select formControlName="taille">
+          <mat-option value="XS">XS</mat-option>
+          <mat-option value="S">S</mat-option>
+          <mat-option value="M">M</mat-option>
+          <mat-option value="L">L</mat-option>
+          <mat-option value="XL">XL</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Color</mat-label>
+      <input matInput formControlName="couleur" placeholder="Color" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <mat-select formControlName="materieau">
+        <mat-option value="Coton">Coton</mat-option>
+        <mat-option value="Polyester">Polyester</mat-option>
+        <mat-option value="Nylon">Nylon</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="cancel-btn" (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onUpdate()" [disabled]="updateForm.invalid">Update</button>
+</mat-dialog-actions>

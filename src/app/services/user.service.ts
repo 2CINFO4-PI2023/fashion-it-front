@@ -39,14 +39,16 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/activatepremium/${userID}`, {});
   }
 
-  findUserByUsername(username: string): Observable<User> {
-    return this.http.post<any>(`${this.baseUrl}/findusername`, { username }).pipe(
-      map(response => {
-        const userData = response.response;
-        return this.setFromJson(userData);
-      }),
-      catchError(this.handleError)
-    );
+  findUserByUsername(username: string): Observable<any> {
+    // return this.http.post<any>(`${this.baseUrl}/findusername`, { username }).pipe(
+    //   map(response => {
+    //     const userData = response.response;
+    //     return this.setFromJson(userData);
+    //   }),
+    //   catchError(this.handleError)
+    // );
+    return this.http.post(`${this.baseUrl}/findusername/`, {username});
+
   }
 
 

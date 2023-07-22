@@ -11,7 +11,7 @@
       <i-tabler name="trash" class="icon-16"></i-tabler>
     </button>
     <!-- EDIT -->
-    <button *ngIf="isShowEditDeleteButtons()" mat-mini-fab color="primary" class="icon-30 edit-btn" matTooltip="Edit">
+    <button *ngIf="isShowEditDeleteButtons()" mat-mini-fab color="primary" class="icon-30 edit-btn" matTooltip="Edit" (click)="openUpdateModal(productcard)">
       <i-tabler name="edit" class="icon-16"></i-tabler>
     </button>
     <!--    FAV-->
